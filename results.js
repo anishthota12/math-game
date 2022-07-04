@@ -1,4 +1,4 @@
-document.getElementById("questionNumber").innerHTML = "Number of Questions Right: " + localStorage.getItem("number");
+document.getElementById("questionNumber").innerHTML = "Number of Questions Answered: " + localStorage.getItem("number");
 document.getElementById("correct").innerHTML = "Correct Questions: " + localStorage.getItem("correct");
 document.getElementById("wrong").innerHTML = "Incorrect Questions: " + localStorage.getItem("incorrect");
 
