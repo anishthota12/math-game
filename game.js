@@ -22,7 +22,7 @@ setInterval(setTimer, 1000);
 function setTimer() {
     document.getElementById("timer").innerHTML = "Time: " + timerNumber;
     timerNumber = timerNumber + 1;
-    if (timerNumber >= 31) {
+    if (timerNumber >= 121) {
         clearInterval();
         localStorage.setItem("correct", correctQuestions);
         localStorage.setItem("incorrect", incorrectQuestions);
