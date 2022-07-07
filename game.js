@@ -1,8 +1,8 @@
 /* GAME SCREEN JAVASCRIPT */
 
 // VARIABLES //
-var randomNumber1 = Math.round(Math.random() * 3);
-var randomNumber2 = Math.round(Math.random() * 3);
+var randomNumber1 = Math.round(Math.random() * 99);
+var randomNumber2 = Math.round(Math.random() * 99);
 var randomSign = Math.ceil(Math.random() * 2);
 
 var timerNumber = 1;
@@ -42,8 +42,8 @@ if (localStorage.getItem("timerEnablement") == "false") {
 }
 
 function setup() {
-    randomNumber1 = Math.round(Math.random() * 3);
-    randomNumber2 = Math.round(Math.random() * 3);
+    randomNumber1 = Math.round(Math.random() * 99);
+    randomNumber2 = Math.round(Math.random() * 99);
     randomSign = Math.ceil(Math.random() * 2);
     if (randomSign == 1) {
         computerAnswer = parseInt(randomNumber1) + parseInt(randomNumber2);
