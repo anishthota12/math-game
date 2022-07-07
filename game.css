@@ -20,7 +20,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 5vw 10vw 10vw 10vw;
+    margin: 5vw;
     font-size: 20px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -34,26 +34,40 @@ body {
 }
 
 #questionSection {
-    margin-top: 30vw;
+    margin-top: 15vw;
 }
 
 #questionLabel {
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-size: 35px;
+    margin-bottom: 20px;
     color: black;
+    width: 75px;
+    text-align: right;
+    margin: auto;
+    padding-right: 10px;
 }
 
 #answerLabel {
-    border-radius: 5px;
+    border-radius: 10px;
     border: none;
-    height: 20px;
+    height: 40px;
+    font-size: 20px;
 }
 
-#submit {
-    margin-top: 17.5px;
+#submit, #doneButton {
+    margin-top: 35px;
     background-color: lightcoral;
     border: none;
-    width: 70px;
-    height: 35px;
-    border-radius: 5px;
+    width: 120px;
+    height: 60px;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#doneButton {
+    background-color: lightgreen;
+    display: none;
+    margin: auto;
+    margin-top: 50px;
 }

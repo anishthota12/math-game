@@ -9,15 +9,15 @@ body {
     font-size: 50px;
     padding: 0;
     margin: 0;
-    margin-bottom: 20vw;
+    margin-bottom: 12.5vw;
 }
 
-#start {
+#game, #practice {
     width: 200px;
-    height: 150px;
+    height: 100px;
     border-radius: 20px;
     border: 3px solid darkgreen;
-    font-size: 45px;
+    font-size: 30px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     padding-bottom: 10px;
     background-color: lightgreen;

@@ -1,6 +1,8 @@
+/* GAME SCREEN JAVASCRIPT */
+
 // VARIABLES //
-var randomNumber1 = Math.round(Math.random() * 999);
-var randomNumber2 = Math.round(Math.random() * 999);
+var randomNumber1 = Math.round(Math.random() * 3);
+var randomNumber2 = Math.round(Math.random() * 3);
 var randomSign = Math.ceil(Math.random() * 2);
 
 var timerNumber = 1;
@@ -13,22 +15,21 @@ var numberQuestions = 0;
 var incorrectQuestions = 0;
 var incorrectQuestionsList = "";
 
-// GAME SCREEN JAVASCRIPT //
-
 //TIMER//
+if (localStorage.getItem("timerEnablement") == "true") {
+    setInterval(setTimer, 1000);
 
-setInterval(setTimer, 1000);
-
-function setTimer() {
-    document.getElementById("timer").innerHTML = "Time: " + timerNumber;
-    timerNumber = timerNumber + 1;
-    if (timerNumber >= 121) {
-        clearInterval();
-        localStorage.setItem("correct", correctQuestions);
-        localStorage.setItem("incorrect", incorrectQuestions);
-        localStorage.setItem("number", numberQuestions);
-        localStorage.setItem("list", incorrectQuestionsList);
-        window.location = "results.html";
+    function setTimer() {
+        document.getElementById("timer").innerHTML = "Time: " + timerNumber;
+        timerNumber = timerNumber + 1;
+        if (timerNumber >= 121) {
+            clearInterval();
+            localStorage.setItem("correct", correctQuestions);
+            localStorage.setItem("incorrect", incorrectQuestions);
+            localStorage.setItem("number", numberQuestions);
+            localStorage.setItem("list", incorrectQuestionsList);
+            window.location = "results.html";
+        }
     }
 }
 
@@ -36,22 +37,31 @@ function setTimer() {
 
 setup();
 
+if (localStorage.getItem("timerEnablement") == "false") {
+    document.getElementById("doneButton").style.display = "block";
+}
+
 function setup() {
-    randomNumber1 = Math.round(Math.random() * 999);
-    randomNumber2 = Math.round(Math.random() * 999);
+    randomNumber1 = Math.round(Math.random() * 3);
+    randomNumber2 = Math.round(Math.random() * 3);
     randomSign = Math.ceil(Math.random() * 2);
     if (randomSign == 1) {
         computerAnswer = parseInt(randomNumber1) + parseInt(randomNumber2);
-        document.getElementById("questionLabel").innerHTML = randomNumber1 + "<br> + " + randomNumber2;
+        document.getElementById("questionLabel").innerHTML = "ㅤ" + randomNumber1 + "<br> + " + randomNumber2;
+        if (randomNumber1 < randomNumber2) {
+            randomNumber1 = randomNumber2;
+            randomNumber2 = computerAnswer - randomNumber1;
+            document.getElementById("questionLabel").innerHTML = "ㅤ" + randomNumber1 + "<br> + " + randomNumber2;
+        }
     } else {
         computerAnswer = parseInt(randomNumber1) - parseInt(randomNumber2);
-        document.getElementById("questionLabel").innerHTML = randomNumber1 + "<br> - " + randomNumber2;
+        document.getElementById("questionLabel").innerHTML = "ㅤ" + randomNumber1 + "<br> - " + randomNumber2;
 
         if (Math.sign(computerAnswer) == -1) {
             computerAnswer = Math.abs(computerAnswer);
             randomNumber1 = randomNumber2;
             randomNumber2 = randomNumber1 - computerAnswer;
-            document.getElementById("questionLabel").innerHTML = randomNumber1 + "<br> - " + randomNumber2;
+            document.getElementById("questionLabel").innerHTML = "ㅤ" + randomNumber1 + "<br> - " + randomNumber2;
         }
     }
 }
@@ -79,16 +89,23 @@ function submit() {
 
         if (randomSign == 1) {
             incorrectQuestionsList += randomNumber1 + " + " + randomNumber2 + " = " + userAnswer + "<br>";
-        }
-        else {
+        } else {
             incorrectQuestionsList += randomNumber1 + " - " + randomNumber2 + " = " + userAnswer + "<br>";
         }
     }
     setup();
 }
 
-window.addEventListener("keypress", function(event){
+window.addEventListener("keypress", function (event) {
     if (event.keyCode === 13) {
         submit();
     }
 })
+
+function complete() {
+    localStorage.setItem("correct", correctQuestions);
+    localStorage.setItem("incorrect", incorrectQuestions);
+    localStorage.setItem("number", numberQuestions);
+    localStorage.setItem("list", incorrectQuestionsList);
+    window.location = "results.html";
+}
