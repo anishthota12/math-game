@@ -1,11 +1,12 @@
 /* GAME SCREEN JAVASCRIPT */
 
 // VARIABLES //
-var randomNumber1 = Math.round(Math.random() * 99);
-var randomNumber2 = Math.round(Math.random() * 99);
-var randomSign = Math.ceil(Math.random() * 2);
-
 var timerNumber = 1;
+var numberRange = 10;
+
+var randomNumber1 = Math.round(Math.random() * numberRange);
+var randomNumber2 = Math.round(Math.random() * numberRange);
+var randomSign = Math.ceil(Math.random() * 2);
 
 var computerAnswer = 0;
 var userAnswer = 0;
@@ -42,8 +43,8 @@ if (localStorage.getItem("timerEnablement") == "false") {
 }
 
 function setup() {
-    randomNumber1 = Math.round(Math.random() * 99);
-    randomNumber2 = Math.round(Math.random() * 99);
+    randomNumber1 = Math.round(Math.random() * numberRange);
+    randomNumber2 = Math.round(Math.random() * numberRange);
     randomSign = Math.ceil(Math.random() * 2);
     if (randomSign == 1) {
         computerAnswer = parseInt(randomNumber1) + parseInt(randomNumber2);
@@ -108,4 +109,27 @@ function complete() {
     localStorage.setItem("number", numberQuestions);
     localStorage.setItem("list", incorrectQuestionsList);
     window.location = "results.html";
+}
+
+// NUMBER RANGES //
+
+function oneTen() {
+    numberRange = 10;
+    document.getElementById("oneTen").style.backgroundColor = "lightgreen";
+    document.getElementById("oneHundred").style.backgroundColor = "hsl(60, 67%, 84%)";
+    document.getElementById("oneThousand").style.backgroundColor = "hsl(60, 67%, 84%)";
+}
+
+function oneHundred() {
+    numberRange = 100;
+    document.getElementById("oneTen").style.backgroundColor = "hsl(60, 67%, 84%)";
+    document.getElementById("oneHundred").style.backgroundColor = "lightgreen";
+    document.getElementById("oneThousand").style.backgroundColor = "hsl(60, 67%, 84%)";
+}
+
+function oneThousand() {
+    numberRange = 1000;
+    document.getElementById("oneTen").style.backgroundColor = "hsl(60, 67%, 84%)";
+    document.getElementById("oneHundred").style.backgroundColor = "hsl(60, 67%, 84%)";
+    document.getElementById("oneThousand").style.backgroundColor = "lightgreen";
 }

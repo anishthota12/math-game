@@ -22,7 +22,7 @@ body {
     align-items: center;
     margin: 5vw;
     font-size: 20px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #score {
@@ -41,10 +41,10 @@ body {
     font-size: 35px;
     margin-bottom: 20px;
     color: black;
-    width: 75px;
+    width: 100px;
     text-align: right;
     margin: auto;
-    padding-right: 10px;
+    padding-right: 20px;
 }
 
 #answerLabel {
@@ -54,7 +54,9 @@ body {
     font-size: 20px;
 }
 
-#submit, #doneButton {
+#submit,
+#doneButton,
+.numberRange {
     margin-top: 35px;
     background-color: lightcoral;
     border: none;
@@ -63,6 +65,15 @@ body {
     border-radius: 10px;
     font-size: 20px;
     cursor: pointer;
+}
+
+.numberRange {
+    background-color: hsl(60, 67%, 84%);
+    margin-left: 10px;
+}
+
+#oneTen {
+    background-color: lightgreen;
 }
 
 #doneButton {
