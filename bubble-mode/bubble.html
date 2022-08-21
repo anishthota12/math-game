@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Mode</title>
+    <link rel="stylesheet" href="../styles/modes.css">
+    <script src="bubble.js" defer></script>
+</head>
+
+<body>
+    <h1 id="title" style="margin-bottom: 30px;">Bubble Mode</h1>
+    <h4 class="statsItem" style="font-weight: 100; margin: 5px auto; background-color: transparent;">Click on the
+        bubbles that equal the chosen number.</h4>
+    <h4 class="statsItem" id="chosenNumber"
+        style="font-weight: 900; margin: 25px auto; background-color: lightgreen; padding: 5px 20px;"></h4>
+    <button class="statsItem" style="float: left; margin-top: 0;" id="correctLabel">Correct: </button>
+    <button class="statsItem" style="float: right; margin-top: 0;" id="livesLabel">Lives: 3</button>
+    <button class="statsItem" style="cursor: pointer; margin: 0; position: absolute; left: calc(50vw - 51.1px); background-color: lightgreen;">Finish</button>
+    <div id="screen">
+    </div>
+    <h1 class="gameOverSign" id="bubbleGameOver">GAME OVER!</h1>
+    <h1 class="loseLifeSign" id="bubbleLifeLost">YOU LOST A LIFE!</h1>
+    <div class="darkScreen" id="bubbleDarkScreen"></div>
+</body>
+
+</html>

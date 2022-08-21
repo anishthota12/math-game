@@ -1,11 +1,15 @@
 /* START SCREEN JAVASCRIPT */
 
-function game() {
-    window.location = "game.html";
+function normalGame() {
+    window.location = "normal-mode/normal.html";
     localStorage.setItem("timerEnablement", "true");
 }
 
-function practice() {
-    window.location = "game.html";
+function normalPractice() {
+    window.location = "normal-mode/normal.html";
     localStorage.setItem("timerEnablement", "false");
+}
+
+function bubbleGame() {
+    window.location = "bubble-mode/bubble.html";
 }
