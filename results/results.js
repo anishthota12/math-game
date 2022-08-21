@@ -43,5 +43,5 @@ function startPractice() {
 }
 
 function startBubbleMode() {
-    window.location = "../normal-mode/normal.html";
+    window.location = "../bubble-mode/bubble.html";
 }
