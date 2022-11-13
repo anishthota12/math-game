@@ -13,3 +13,14 @@ function normalPractice() {
 function bubbleGame() {
     window.location = "bubble-mode/bubble.html";
 }
+
+function infoBox() {
+    document.getElementById("darkScreen").style.display = "block";
+    document.getElementById("infoBox").style.display = "block";
+}
+
+function close() {
+    document.getElementById("darkScreen").style.display = "none";
+    document.getElementById("infoBox").style.display = "none";
+    console.log("hi")
+}

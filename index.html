@@ -10,6 +10,7 @@
 </head>
 <body>
     <h1 id="title">Home Page</h1>
+    <h2 id="infoLine" onclick="infoBox()">&#9432; Info</h2>
     <button id="normal-game" onclick="normalGame()">Normal - Game</button>
     <br>
     <br>
@@ -17,5 +18,16 @@
     <br>
     <br>
     <button id="bubble-game" onclick="bubbleGame()">Bubble - Game</button>
+    <div id="darkScreen" onclick="console.log('test')"></div>
+    <div id="infoBox">
+        <h2 id="infoBoxTitle">Info Box</h2>
+        <button id="infoBoxClose" onclick="document.getElementById('darkScreen').style.display = 'none';
+        document.getElementById('infoBox').style.display = 'none';">&#10006;</button>
+        <p id="infoBoxParagraph">ㅤㅤThis website was created to help people with math. I hope you enjoy the games and learn math from here!
+            <br>
+            <br>
+            ㅤㅤ
+        </p>
+    </div>
 </body>
 </html>

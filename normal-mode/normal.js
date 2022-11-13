@@ -6,7 +6,7 @@ var numberRange = 10;
 
 var randomNumber1 = Math.round(Math.random() * numberRange);
 var randomNumber2 = Math.round(Math.random() * numberRange);
-var randomSign = Math.ceil(Math.random() * 2);
+var randomSign = Math.ceil(Math.random() * 3);
 
 var computerAnswer = 0;
 var userAnswer = 0;
@@ -15,11 +15,16 @@ var correctQuestions = 0;
 var incorrectQuestions = 0;
 var incorrectQuestionsList = "";
 
+var additionOperation = true
+var subtractionOperation = true
+var multiplicationOperation = false
+
 
 //TIMER//
 if (localStorage.getItem("timerEnablement") == "true") {
     setInterval(setTimer, 1000);
     localStorage.removeItem("timerEnablement")
+
     function setTimer() {
         document.getElementById("timer").innerHTML = "Time: " + timerNumber;
         timerNumber = timerNumber + 1;
@@ -45,8 +50,12 @@ if (localStorage.getItem("timerEnablement") == "false") {
 function setup() {
     randomNumber1 = Math.round(Math.random() * numberRange);
     randomNumber2 = Math.round(Math.random() * numberRange);
-    randomSign = Math.ceil(Math.random() * 2);
+    randomSign = Math.ceil(Math.random() * 3);
     if (randomSign == 1) {
+        if (additionOperation == false) {
+            setup();
+            return;
+        }
         computerAnswer = parseInt(randomNumber1) + parseInt(randomNumber2);
         document.getElementById("questionLabel").innerHTML = "ㅤ" + randomNumber1 + "<br> + " + randomNumber2;
         if (randomNumber1 < randomNumber2) {
@@ -54,7 +63,11 @@ function setup() {
             randomNumber2 = computerAnswer - randomNumber1;
             document.getElementById("questionLabel").innerHTML = "ㅤ" + randomNumber1 + "<br> + " + randomNumber2;
         }
-    } else {
+    } else if (randomSign == 2) {
+        if (subtractionOperation == false) {
+            setup();
+            return;
+        }
         computerAnswer = parseInt(randomNumber1) - parseInt(randomNumber2);
         document.getElementById("questionLabel").innerHTML = "ㅤ" + randomNumber1 + "<br> - " + randomNumber2;
 
@@ -64,6 +77,13 @@ function setup() {
             randomNumber2 = randomNumber1 - computerAnswer;
             document.getElementById("questionLabel").innerHTML = "ㅤ" + randomNumber1 + "<br> - " + randomNumber2;
         }
+    } else if (randomSign == 3) {
+        if (multiplicationOperation == false) {
+            setup();
+            return;
+        }
+        computerAnswer = parseInt(randomNumber1) * parseInt(randomNumber2);
+        document.getElementById("questionLabel").innerHTML = "ㅤ" + randomNumber1 + "<br> x " + randomNumber2;
     }
 }
 
@@ -88,8 +108,10 @@ function submit() {
 
         if (randomSign == 1) {
             incorrectQuestionsList += randomNumber1 + " + " + randomNumber2 + " = " + userAnswer + "<br>";
-        } else {
+        } else if (randomSign == 2) {
             incorrectQuestionsList += randomNumber1 + " - " + randomNumber2 + " = " + userAnswer + "<br>";
+        } else if (randomSign == 3) {
+            incorrectQuestionsList += randomNumber1 + " x " + randomNumber2 + " = " + userAnswer + "<br>";
         }
     }
     setup();
@@ -111,23 +133,38 @@ function finish() {
 
 // NUMBER RANGES //
 
-function oneTen() {
-    numberRange = 10;
-    document.getElementById("oneTen").style.backgroundColor = "lightgreen";
-    document.getElementById("oneHundred").style.backgroundColor = "hsl(60, 67%, 84%)";
-    document.getElementById("oneThousand").style.backgroundColor = "hsl(60, 67%, 84%)";
-}
-
-function oneHundred() {
-    numberRange = 100;
-    document.getElementById("oneTen").style.backgroundColor = "hsl(60, 67%, 84%)";
-    document.getElementById("oneHundred").style.backgroundColor = "lightgreen";
-    document.getElementById("oneThousand").style.backgroundColor = "hsl(60, 67%, 84%)";
-}
-
-function oneThousand() {
-    numberRange = 1000;
+function changeNumberRange(numberRangeButton, newNumberRange) {
+    numberRange = newNumberRange;
     document.getElementById("oneTen").style.backgroundColor = "hsl(60, 67%, 84%)";
     document.getElementById("oneHundred").style.backgroundColor = "hsl(60, 67%, 84%)";
-    document.getElementById("oneThousand").style.backgroundColor = "lightgreen";
+    document.getElementById("oneThousand").style.backgroundColor = "hsl(60, 67%, 84%)";
+    document.getElementById(numberRangeButton).style.backgroundColor = "lightgreen";
+}
+
+function changeOperation(operation) {
+    if (operation == "addition") {
+        if (additionOperation == false) {
+            additionOperation = true;
+            document.getElementById("operationAdditionButton").style.backgroundColor = "lightgreen";
+        } else if (additionOperation == true) {
+            additionOperation = false;
+            document.getElementById("operationAdditionButton").style.backgroundColor = "hsl(60, 67%, 84%)";
+        }
+    } else if (operation == "subtraction") {
+        if (subtractionOperation == false) {
+            subtractionOperation = true;
+            document.getElementById("operationSubtractionButton").style.backgroundColor = "lightgreen";
+        } else if (subtractionOperation == true) {
+            subtractionOperation = false;
+            document.getElementById("operationSubtractionButton").style.backgroundColor = "hsl(60, 67%, 84%)";
+        }
+    } else if (operation == "multiplication") {
+        if (multiplicationOperation == false) {
+            multiplicationOperation = true;
+            document.getElementById("operationMultiplicationButton").style.backgroundColor = "lightgreen";
+        } else if (multiplicationOperation == true) {
+            multiplicationOperation = false;
+            document.getElementById("operationMultiplicationButton").style.backgroundColor = "hsl(60, 67%, 84%)";
+        }
+    }
 }

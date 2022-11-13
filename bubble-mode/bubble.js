@@ -95,3 +95,10 @@ function loseLife() {
     timer = setInterval(test, 3000);
     correctBubbleClickStatus = true;
 }
+
+function finish() {
+    localStorage.setItem("game-mode", "bubble");
+    localStorage.setItem("correct", correctBubbles);
+    localStorage.setItem("list", incorrectQuestionsList);
+    window.location = "../results/results.html"
+}

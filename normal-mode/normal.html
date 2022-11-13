@@ -11,9 +11,13 @@
 <body>
     <h1 id="title">Normal Mode</h1>
     <h1 id="status"></h1>
-    <button class="numberRange" id="oneTen" onclick="oneTen()">1 - 10</button>
-    <button class="numberRange" id="oneHundred" onclick="oneHundred()">1 - 100</button>
-    <button class="numberRange" id="oneThousand" onclick="oneThousand()">1 - 1000</button>
+    <button class="operationButton" id="operationAdditionButton" onclick="changeOperation('addition')">Addition</button>
+    <button class="operationButton" id="operationSubtractionButton" onclick="changeOperation('subtraction')">Subtraction</button>
+    <button class="operationButton" id="operationMultiplicationButton" onclick="changeOperation('multiplication')">Multiplication</button>
+    <br>
+    <button class="numberRange" id="oneTen" onclick="changeNumberRange(this.id, 10)">1 - 10</button>
+    <button class="numberRange" id="oneHundred" onclick="changeNumberRange(this.id, 100)">1 - 100</button>
+    <button class="numberRange" id="oneThousand" onclick="changeNumberRange(this.id, 1000)">1 - 1000</button>
     <div id="stats">
         <div class="statsItem" id="score">Correct</div>
         <div class="statsItem" id="timer">Time</div>

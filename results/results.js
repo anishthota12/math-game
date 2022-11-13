@@ -32,12 +32,12 @@ localStorage.removeItem("list");
 localStorage.removeItem("game-mode");
 localStorage.removeItem("timerEnablement");
 
-function startGame() {
+function startNormalGame() {
     localStorage.setItem("timerEnablement", "true")
     window.location = "../normal-mode/normal.html";
 }
 
-function startPractice() {
+function startNormalPractice() {
     localStorage.setItem("timerEnablement", "false")
     window.location = "../normal-mode/normal.html";
 }

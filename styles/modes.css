@@ -60,20 +60,25 @@ body {
 
 #submit,
 .doneButton,
-.numberRange {
-    margin-top: 35px;
+.numberRange,
+.operationButton {
+    margin: 35px 10px 0 10px;
     background-color: lightcoral;
     border: none;
-    width: 120px;
+    width: fit-content;
+    padding: 0 20px;
     height: 60px;
     border-radius: 10px;
     font-size: 20px;
     cursor: pointer;
 }
 
-.numberRange {
-    background-color: hsl(60, 67%, 84%);
-    margin-left: 10px;
+.numberRange,
+#operationMultiplicationButton {background-color: hsl(60, 67%, 84%);}
+
+.operationButton {
+    background-color: lightgreen;
+    width: fit-content;
 }
 
 #oneTen {
