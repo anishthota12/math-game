@@ -92,7 +92,7 @@ function setup() {
             return;
         }
         bob = []
-        for(let i = 1; i <= 25; i++) {
+        for(let i = 2; i <= 30; i++) {
             if(randomNumber1 % i == 0) {
                 bob.push(i)
             }
