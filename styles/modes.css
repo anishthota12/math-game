@@ -74,7 +74,8 @@ body {
 }
 
 .numberRange,
-#operationMultiplicationButton {background-color: hsl(60, 67%, 84%);}
+#operationMultiplicationButton,
+#operationDivisionButton {background-color: hsl(60, 67%, 84%);}
 
 .operationButton {
     background-color: lightgreen;
