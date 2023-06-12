@@ -18,6 +18,7 @@ var incorrectQuestionsList = "";
 var additionOperation = true
 var subtractionOperation = true
 var multiplicationOperation = false
+var divisionOperation = false
 
 
 //TIMER//
@@ -50,7 +51,7 @@ if (localStorage.getItem("timerEnablement") == "false") {
 function setup() {
     randomNumber1 = Math.round(Math.random() * numberRange);
     randomNumber2 = Math.round(Math.random() * numberRange);
-    randomSign = Math.ceil(Math.random() * 3);
+    randomSign = Math.ceil(Math.random() * 4);
     if (randomSign == 1) {
         if (additionOperation == false) {
             setup();
@@ -85,6 +86,21 @@ function setup() {
         computerAnswer = parseInt(randomNumber1) * parseInt(randomNumber2);
         document.getElementById("questionLabel").innerHTML = "ㅤ" + randomNumber1 + "<br> x " + randomNumber2;
     }
+    else if (randomSign == 4) {
+        if (divisionOperation == false) {
+            setup();
+            return;
+        }
+        bob = []
+        for(let i = 1; i <= 25; i++) {
+            if(randomNumber1 % i == 0) {
+                bob.push(i)
+            }
+        }
+        randomNumber2 = bob[Math.floor(Math.random() * bob.length)]
+        computerAnswer = parseInt(randomNumber1) / parseInt(randomNumber2);
+        document.getElementById("questionLabel").innerHTML = "ㅤ" + randomNumber1 + "<br> / " + randomNumber2;
+    }
 }
 
 //SUBMITTING//
@@ -112,6 +128,8 @@ function submit() {
             incorrectQuestionsList += randomNumber1 + " - " + randomNumber2 + " = " + userAnswer + "<br>";
         } else if (randomSign == 3) {
             incorrectQuestionsList += randomNumber1 + " x " + randomNumber2 + " = " + userAnswer + "<br>";
+        } else if (randomSign == 4) {
+            incorrectQuestionsList += randomNumber1 + " / " + randomNumber2 + " = " + userAnswer + "<br>";
         }
     }
     setup();
@@ -138,6 +156,7 @@ function changeNumberRange(numberRangeButton, newNumberRange) {
     document.getElementById("oneTen").style.backgroundColor = "hsl(60, 67%, 84%)";
     document.getElementById("oneHundred").style.backgroundColor = "hsl(60, 67%, 84%)";
     document.getElementById("oneThousand").style.backgroundColor = "hsl(60, 67%, 84%)";
+    document.getElementById("tenThousand").style.backgroundColor = "hsl(60, 67%, 84%)";
     document.getElementById(numberRangeButton).style.backgroundColor = "lightgreen";
 }
 
@@ -165,6 +184,14 @@ function changeOperation(operation) {
         } else if (multiplicationOperation == true) {
             multiplicationOperation = false;
             document.getElementById("operationMultiplicationButton").style.backgroundColor = "hsl(60, 67%, 84%)";
+        }
+    } else if (operation == "division") {
+        if (divisionOperation == false) {
+            divisionOperation = true;
+            document.getElementById("operationDivisionButton").style.backgroundColor = "lightgreen";
+        } else if (divisionOperation == true) {
+            divisionOperation = false;
+            document.getElementById("operationDivisionButton").style.backgroundColor = "hsl(60, 67%, 84%)";
         }
     }
 }
